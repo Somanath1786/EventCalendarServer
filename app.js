@@ -28,6 +28,9 @@ app.use(require('body-parser').json())
 
 // Routes
 app.use('/api/events', require('./api/routes/events'))
+app.use('/api/giveEvents', require('./api/routes/giveEvents'))
+app.use('/api/fhlEvents', require('./api/routes/fhlEvents'))
+app.use('/api/summerOfOneEvents', require('./api/routes/summerOfOneEvents'))
 
 // Not Found Handler
 app.use((req, res, next) => {
