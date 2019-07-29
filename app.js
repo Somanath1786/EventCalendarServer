@@ -6,6 +6,8 @@ const cors = require('cors')
 const app = express();
 app.use(cors());
 
+var port = process.env.PORT;
+
 if (NODE_ENV === "development")
 {
     app.use(require('morgan')('dev'));
@@ -48,5 +50,5 @@ app.use((err, req, res, next) => {
 
 
 // Set up a listener to listen on the specified PORT
-const listener = () => console.log('Listening on port ' + PORT);
-app.listen(PORT, listener);
+const listener = () => console.log('Listening on port ' + port);
+app.listen(port, listener);
