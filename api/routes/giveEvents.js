@@ -21,7 +21,27 @@ router.post('/', async (req, res, next) => {
 
   router.get('/', async (req, res, next) => {
     const status = 200
-    const response = await GiveEvents.find();
+    const queryParams = req.query;
+    // If no query params are present then return all the documents
+    // queryParams is of type Object, hence a null check wont be sufficient
+    if (Object.entries(queryParams).length === 0 && queryParams.constructor === Object)
+    {
+        response = await GiveEvents.find({})
+    }
+
+    if (Object.keys(queryParams).length === 1)
+      {
+        key = Object.keys(queryParams)[0].toString();
+        value = queryParams[key].toString();
+        if (value === 'FundRaising')
+        {
+          response = await GiveEvents.find({event_type : 'FundRaising'})
+        }
+        if (value === 'Volunteering')
+        {
+          response = await GiveEvents.find({event_type : 'Volunteering'})
+        }
+      }
 
     res.json({ status, response })
   })

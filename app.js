@@ -1,4 +1,4 @@
-const { NODE_ENV, PORT, MONGO_DB_CONNECTION } = process.env
+const { NODE_ENV, MONGO_DB_CONNECTION } = process.env
 const express = require('express');
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -6,7 +6,7 @@ const cors = require('cors')
 const app = express();
 app.use(cors());
 
-var port = process.env.PORT;
+var port = process.env.PORT || 5000;
 
 if (NODE_ENV === "development")
 {
@@ -33,6 +33,7 @@ app.use('/api/events', require('./api/routes/events'))
 app.use('/api/giveEvents', require('./api/routes/giveEvents'))
 app.use('/api/fhlEvents', require('./api/routes/fhlEvents'))
 app.use('/api/summerOfOneEvents', require('./api/routes/summerOfOneEvents'))
+app.use('/api/EnDFunEvents', require('./api/routes/eNdFunEvents'))
 
 // Not Found Handler
 app.use((req, res, next) => {

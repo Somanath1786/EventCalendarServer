@@ -12,6 +12,10 @@
   "devDependencies": {
     "morgan": "^1.9.1"
   },
+  "engines": {
+    "node": "8.9.4",
+    "npm": "3.7.3"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
